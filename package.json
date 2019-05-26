@@ -14,7 +14,12 @@
   ],
   "author": "Alex liao",
   "license": "ISC",
-  "dependencies": {
-    "babel-polyfill": "^6.26.0"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lr5420511/element-solution.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lr5420511/element-solution/issues"
+  },
+  "homepage": "https://github.com/lr5420511/element-solution#readme"
 }
