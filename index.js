@@ -1,5 +1,6 @@
 import ScrollDown from './natives/scrolldown-elsolution';
 import TouchDown from './natives/touchdown-elsolution';
+import TouchMove from './natives/touchmove-elsolution';
 
 const Solution = function(el, solution, options) {
     const { cache, exist, rules } = Solution;
@@ -44,6 +45,8 @@ Object.assign(Solution, {
     rules: {}
 });
 
-Solution.install(ScrollDown).install(TouchDown);
+Solution.install(ScrollDown)
+        .install(TouchDown)
+        .install(TouchMove);
 
 export default Solution;

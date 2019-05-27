@@ -1,5 +1,5 @@
 # element-solution
-元素应用指定的方案，已达到需要的效果。原生支持向下滚动加载，以及向下拉取刷新功能。您也可以通过插件的方式丰富您需要的方案。
+元素应用指定的方案，已达到需要的效果。原生支持向下滚动加载、向下拉取刷新以及触摸移动功能。您也可以通过插件的方式丰富您需要的方案。
 
 # 特色
 > `元素方案通过插件的方式进行管理，简单方便且干净。可以根据自身的需求选择或编写需要的元素方案插件。应用方案以后，如果不在需要该方案，可以调用函数进行后续清理。`
@@ -30,11 +30,13 @@
 # 关于插件
 
 ## 原生插件的使用
-包本身默认安装了两个插件方案：
+包本身默认安装了两个插件方案（新增了一个插件方案）：
 
 1. scrolldown-elsolution，该方案主要用于向下滚动加载更多项的场景。
 
-2. touchdown-elsolution，该方案主要用于向下拉取然后进行刷新的业务场景。
+2. touchdown-elsolution，该方案主要用于向下拉取然后进行刷新的场景。
+
+3. touchmove-elsolution，该方案主要用于触摸后需要移动的场景。
 
 ### scrolldown-elsolution
 
@@ -67,6 +69,23 @@
                     // 可以在这里做progress中提醒任务的清理工作。如果isCritical为true时，表示本次下拉到达临界区域。我们可以发起http请求以便
                     // 对数据进行更新。
                 }   // 当touchend时执行，无论下拉操作是否到达临界区域都会执行。
+            }
+        );
+
+### touchmove-elsolution
+
+        import ElSolution from 'element-solution';
+
+        const solution = new ElSolution(
+            document.documentElement,
+            'touch-move',
+            {
+                progress: function(curOffset, oldOffset) {
+                    // 你可以在这里绘制图形，以响应用户操作
+                },  // 第一个参数表示本次移动相对于touchstart坐标的偏移量，第二个参数表示上次的偏移量，两者之差代表本次移动相对于上次的偏移量。
+                callback: function(offset) {
+                    // 当你touchend时执行这个钩子函数，你可以在这里做一些清理工作，以及对用户操作作出最终响应。
+                }   // 参数表示最终的移动相对于touchstart坐标的偏移量
             }
         );
 
