@@ -4,23 +4,27 @@ export default runtime => {
     runtime.rules['touch-down'] = [
         // Use rule for element
         function(el, options) {
-            const { critical, progress, callback } = Object.assign({}, {
+            const { critical, progress, callback, bubble } = Object.assign({}, {
                  critical: 50,
                  progress: null,
-                 callback: null
+                 callback: null,
+                 bubble: true
             }, options);
             let minimize, val, hooks;
             const [touchStartHook, touchMoveHook, touchEndHook] = hooks = [
                 ev => {
+                    bubble || (ev.stopPropagation());
                     minimize = ev.touches[0].clientY + el.scrollTop;
                 },
                 ev => {
+                    bubble || (ev.stopPropagation());
                     val = ev.touches[0].clientY - minimize;
                     if(val >= 0 && !el.scrollTop) {
                         progress && (progress(val));
                     }
                 },
-                () => {
+                ev => {
+                    bubble || (ev.stopPropagation());
                     callback && (callback(val >= critical));
                 }
             ];

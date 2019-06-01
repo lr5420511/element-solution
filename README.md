@@ -61,6 +61,7 @@
             document.documentElement,
             'touch-down',
             {
+                bubble: false, // 指示本次方案不冒泡，默认值为true。
                 critical: 70, // 当元素scrollTop为0时，还需要下拉多少距离到达临界区域，默认值为50。
                 progress: function(val) {
                     // 你可以在这里绘制一个图形，以便提醒用户继续下拉刷新
@@ -80,6 +81,7 @@
             document.documentElement,
             'touch-move',
             {
+                bubble: false, // 指示本次方案不冒泡，默认值为true。
                 progress: function(curOffset, oldOffset) {
                     // 你可以在这里绘制图形，以响应用户操作
                 },  // 第一个参数表示本次移动相对于touchstart坐标的偏移量，第二个参数表示上次的偏移量，两者之差代表本次移动相对于上次的偏移量。

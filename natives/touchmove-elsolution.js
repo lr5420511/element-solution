@@ -4,25 +4,29 @@ export default runtime => {
     runtime.rules['touch-move'] = [
         // Use rule for element
         function(el, options) {
-            const { progress, callback } = Object.assign({}, {
+            const { progress, callback, bubble } = Object.assign({}, {
                 progress: null,
-                callback: null
+                callback: null,
+                bubble: true
             }, options);
             let initial, hooks, vectors = [0, 0];
             const [
                 touchStartHook, touchMoveHook, touchEndHook
             ] = hooks = [
                 ev => {
+                    bubble || (ev.stopPropagation());
                     const touch = ev.touches[0];
                     initial = [touch.pageX, touch.pageY];
                 },
                 ev => {
+                    bubble || (ev.stopPropagation());
                     const touch = ev.touches[0],
                         tmp = [touch.pageX - initial[0], touch.pageY - initial[1]];
                     progress && (progress(tmp, vectors));
                     vectors = tmp;
                 },
-                () => {
+                ev => {
+                    bubble || (ev.stopPropagation());
                     callback && (callback(vectors));
                     vectors = [0, 0];
                 }
