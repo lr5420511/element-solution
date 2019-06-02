@@ -15,6 +15,7 @@ export default runtime => {
                 ev => {
                     bubble || (ev.stopPropagation());
                     minimize = ev.touches[0].clientY + el.scrollTop;
+                    val = null; // repair at version 1.0.3
                 },
                 ev => {
                     bubble || (ev.stopPropagation());

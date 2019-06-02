@@ -53,7 +53,7 @@
             }
         );
 
-### touchdown-elsolution
+### touchdown-elsolution (在1.0.3中修复了一个存在的问题)
         
         import ElSolution from 'element-solution';
 
