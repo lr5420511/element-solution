@@ -14,7 +14,9 @@ export default runtime => {
             const [touchStartHook, touchMoveHook, touchEndHook] = hooks = [
                 ev => {
                     bubble || (ev.stopPropagation());
-                    minimize = ev.touches[0].clientY + el.scrollTop;
+                    minimize = ev.touches[0].clientY + (el === root ? 
+                        (el.scrollTop || document.body.scrollTop) : el.scrollTop
+                    );
                     val = null; // repair at version 1.0.3
                 },
                 ev => {

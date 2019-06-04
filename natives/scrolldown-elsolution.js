@@ -10,8 +10,10 @@ export default runtime => {
             }, options);
             let toBottom;
             const scrollHook = function() {
-                const scrollBottom = el.scrollHeight - el.clientHeight - el.scrollTop,
-                    tmp = scrollBottom <= critical;
+                const scrollBottom = el.scrollHeight - el.clientHeight - (el === root ?
+                    (el.scrollTop || document.body.scrollTop) : el.scrollTop    
+                ),
+                tmp = scrollBottom <= critical;
                 if(tmp && !toBottom && callback) callback(scrollBottom);
                 toBottom = tmp;
             };
