@@ -53,6 +53,8 @@
             }
         );
 
+[参考页面-第100行开始](https://github.com/lr5420511/vue-today/blob/master/src/components/layouts/layout-series.vue)
+
 ### touchdown-elsolution (在1.0.3中修复了一个存在的问题)
         
         import ElSolution from 'element-solution';
@@ -73,6 +75,8 @@
             }
         );
 
+[参考页面-第111行开始](https://github.com/lr5420511/vue-today/blob/master/src/components/layouts/layout-series.vue)
+
 ### touchmove-elsolution
 
         import ElSolution from 'element-solution';
@@ -90,6 +94,8 @@
                 }   // 参数表示最终的移动相对于touchstart坐标的偏移量
             }
         );
+
+[参考页面-第77行开始](https://github.com/lr5420511/vue-today/blob/master/src/components/commons/common-carousel.vue)
 
 ## 丰富插件方案
 我们也可以自己编写自己需要的元素方案插件，以便使用。
